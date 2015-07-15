@@ -3,11 +3,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include "systemclass.h"
 
+
 SystemClass::SystemClass()
 {
 	m_Input = 0;
 	m_Graphics = 0;
 }
+
 
 SystemClass::SystemClass(const SystemClass& other)
 {
@@ -17,6 +19,7 @@ SystemClass::SystemClass(const SystemClass& other)
 SystemClass::~SystemClass()
 {
 }
+
 
 bool SystemClass::Initialize()
 {
@@ -58,6 +61,7 @@ bool SystemClass::Initialize()
 	return true;
 }
 
+
 void SystemClass::Shutdown()
 {
 	// Release the graphics object.
@@ -80,6 +84,7 @@ void SystemClass::Shutdown()
 
 	return;
 }
+
 
 void SystemClass::Run()
 {
@@ -119,8 +124,8 @@ void SystemClass::Run()
 	}
 
 	return;
-
 }
+
 
 bool SystemClass::Frame()
 {
@@ -142,6 +147,7 @@ bool SystemClass::Frame()
 
 	return true;
 }
+
 
 LRESULT CALLBACK SystemClass::MessageHandler(HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam)
 {
@@ -171,6 +177,7 @@ LRESULT CALLBACK SystemClass::MessageHandler(HWND hwnd, UINT umsg, WPARAM wparam
 	}
 }
 
+
 void SystemClass::InitializeWindows(int& screenWidth, int& screenHeight)
 {
 	WNDCLASSEX wc;
@@ -178,7 +185,7 @@ void SystemClass::InitializeWindows(int& screenWidth, int& screenHeight)
 	int posX, posY;
 
 
-	// Get an external pointer to this object.
+	// Get an external pointer to this object.	
 	ApplicationHandle = this;
 
 	// Get the instance of this application.
@@ -252,6 +259,7 @@ void SystemClass::InitializeWindows(int& screenWidth, int& screenHeight)
 	return;
 }
 
+
 void SystemClass::ShutdownWindows()
 {
 	// Show the mouse cursor.
@@ -276,6 +284,7 @@ void SystemClass::ShutdownWindows()
 
 	return;
 }
+
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 {
@@ -302,4 +311,3 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 	}
 	}
 }
-

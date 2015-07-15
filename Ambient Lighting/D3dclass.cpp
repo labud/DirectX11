@@ -3,6 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include "d3dclass.h"
 
+
 D3DClass::D3DClass()
 {
 	m_swapChain = 0;
@@ -24,6 +25,7 @@ D3DClass::D3DClass(const D3DClass& other)
 D3DClass::~D3DClass()
 {
 }
+
 
 bool D3DClass::Initialize(int screenWidth, int screenHeight, bool vsync, HWND hwnd, bool fullscreen,
 	float screenDepth, float screenNear)
@@ -104,6 +106,23 @@ bool D3DClass::Initialize(int screenWidth, int screenHeight, bool vsync, HWND hw
 				denominator = displayModeList[i].RefreshRate.Denominator;
 			}
 		}
+	}
+
+	// Get the adapter (video card) description.
+	result = adapter->GetDesc(&adapterDesc);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+	// Store the dedicated video card memory in megabytes.
+	m_videoCardMemory = (int)(adapterDesc.DedicatedVideoMemory / 1024 / 1024);
+
+	// Convert the name of the video card to a character array and store it.
+	error = wcstombs_s(&stringLength, m_videoCardDescription, 128, adapterDesc.Description, 128);
+	if (error != 0)
+	{
+		return false;
 	}
 
 	// Release the display mode list.
@@ -263,7 +282,7 @@ bool D3DClass::Initialize(int screenWidth, int screenHeight, bool vsync, HWND hw
 	// Set the depth stencil state.
 	m_deviceContext->OMSetDepthStencilState(m_depthStencilState, 1);
 
-	// Initailze the depth stencil view.
+	// Initialize the depth stencil view.
 	ZeroMemory(&depthStencilViewDesc, sizeof(depthStencilViewDesc));
 
 	// Set up the depth stencil view description.
@@ -321,7 +340,6 @@ bool D3DClass::Initialize(int screenWidth, int screenHeight, bool vsync, HWND hw
 	// Create the projection matrix for 3D rendering.
 	D3DXMatrixPerspectiveFovLH(&m_projectionMatrix, fieldOfView, screenAspect, screenNear, screenDepth);
 
-
 	// Initialize the world matrix to the identity matrix.
 	D3DXMatrixIdentity(&m_worldMatrix);
 
@@ -330,6 +348,7 @@ bool D3DClass::Initialize(int screenWidth, int screenHeight, bool vsync, HWND hw
 
 	return true;
 }
+
 
 void D3DClass::Shutdown()
 {
@@ -390,6 +409,7 @@ void D3DClass::Shutdown()
 	return;
 }
 
+
 void D3DClass::BeginScene(float red, float green, float blue, float alpha)
 {
 	float color[4];
@@ -428,6 +448,7 @@ void D3DClass::EndScene()
 	return;
 }
 
+
 ID3D11Device* D3DClass::GetDevice()
 {
 	return m_device;
@@ -438,6 +459,7 @@ ID3D11DeviceContext* D3DClass::GetDeviceContext()
 {
 	return m_deviceContext;
 }
+
 
 void D3DClass::GetProjectionMatrix(D3DXMATRIX& projectionMatrix)
 {
@@ -458,6 +480,7 @@ void D3DClass::GetOrthoMatrix(D3DXMATRIX& orthoMatrix)
 	orthoMatrix = m_orthoMatrix;
 	return;
 }
+
 
 void D3DClass::GetVideoCardInfo(char* cardName, int& memory)
 {

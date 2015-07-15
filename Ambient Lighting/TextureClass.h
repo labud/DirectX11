@@ -3,6 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #pragma once
 
+
 //////////////
 // INCLUDES //
 //////////////
@@ -19,16 +20,12 @@ public:
 	TextureClass();
 	TextureClass(const TextureClass&);
 	~TextureClass();
-	//下面两个函数分别通过给定的文件名加载贴图和不再使用时卸载贴图。
 
 	bool Initialize(ID3D11Device*, WCHAR*);
 	void Shutdown();
-	//GetTexture函数返回一个指向贴图资源的指针给shader渲染时使用。
 
 	ID3D11ShaderResourceView* GetTexture();
 
 private:
-	//下面是私有变量，保存了贴图资源指针。
-
 	ID3D11ShaderResourceView* m_texture;
 };

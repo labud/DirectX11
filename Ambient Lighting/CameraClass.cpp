@@ -2,8 +2,6 @@
 // Filename: cameraclass.cpp
 ////////////////////////////////////////////////////////////////////////////////
 #include "cameraclass.h"
-//构造函数将相机的位置和方向初始化在场景的原点。
-
 CameraClass::CameraClass()
 {
 	m_positionX = 0.0f;
@@ -24,7 +22,7 @@ CameraClass::CameraClass(const CameraClass& other)
 CameraClass::~CameraClass()
 {
 }
-//SetPosition 和 SetRotation 函数用来设置相机的位置和方向。
+
 
 void CameraClass::SetPosition(float x, float y, float z)
 {
@@ -42,7 +40,7 @@ void CameraClass::SetRotation(float x, float y, float z)
 	m_rotationZ = z;
 	return;
 }
-//GetPosition 和 GetRotation 函数返回相机的位置和方向。
+
 
 D3DXVECTOR3 CameraClass::GetPosition()
 {
@@ -54,7 +52,7 @@ D3DXVECTOR3 CameraClass::GetRotation()
 {
 	return D3DXVECTOR3(m_rotationX, m_rotationY, m_rotationZ);
 }
-//Render 函数用相机位置和方向来创建并更新view matrix。首先我们设置上向量、位置、方向等变量。然后我们在世界原点分别按相机的X、Y、Z轴旋转相机。然后在三维空间中将相机移动到指定的位置。有了正确的position、LookAt和up向量后，我们可以使用D3DXMatrixLookAtLH函数来创建可以表示相机旋转和移动的view matrix。
+
 
 void CameraClass::Render()
 {
@@ -98,7 +96,7 @@ void CameraClass::Render()
 
 	return;
 }
-//当我们在Render函数中创建了view matrix后，就可以通过调用GetViewMatrix函数来提供view matrix以便调用update函数。view matrix是HLSL vertex shader中使用的三个重要matrix的其中一个。
+
 
 void CameraClass::GetViewMatrix(D3DXMATRIX& viewMatrix)
 {

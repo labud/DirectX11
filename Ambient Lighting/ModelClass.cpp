@@ -3,11 +3,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include "modelclass.h"
 
+
 ModelClass::ModelClass()
 {
 	m_vertexBuffer = 0;
-	m_indexBuffer = 0; 
-	m_Texture = 0;	
+	m_indexBuffer = 0;
+	m_Texture = 0;
 	m_model = 0;
 }
 
@@ -21,18 +22,20 @@ ModelClass::~ModelClass()
 {
 }
 
+
 bool ModelClass::Initialize(ID3D11Device* device, char* modelFilename, WCHAR* textureFilename)
 {
 	bool result;
 
-	//In the Initialize function we now call the new LoadModel function first. It will load the model data from the file name we provide into the new m_model array. Once this model array is filled we can then build the vertex and index buffers from it. Since InitializeBuffers now depends on this model data you have to make sure to call the functions in the correct order. 
+
+	// Load in the model data,
 	result = LoadModel(modelFilename);
 	if (!result)
 	{
 		return false;
 	}
 
-	// Initialize the vertex and index buffer that hold the geometry for the triangle.
+	// Initialize the vertex and index buffers.
 	result = InitializeBuffers(device);
 	if (!result)
 	{
@@ -49,12 +52,13 @@ bool ModelClass::Initialize(ID3D11Device* device, char* modelFilename, WCHAR* te
 	return true;
 }
 
+
 void ModelClass::Shutdown()
-{	
+{
 	// Release the model texture.
 	ReleaseTexture();
 
-	// Release the vertex and index buffers.
+	// Shutdown the vertex and index buffers.
 	ShutdownBuffers();
 
 	// Release the model data.
@@ -62,6 +66,7 @@ void ModelClass::Shutdown()
 
 	return;
 }
+
 
 void ModelClass::Render(ID3D11DeviceContext* deviceContext)
 {
@@ -71,10 +76,12 @@ void ModelClass::Render(ID3D11DeviceContext* deviceContext)
 	return;
 }
 
+
 int ModelClass::GetIndexCount()
 {
 	return m_indexCount;
 }
+
 
 ID3D11ShaderResourceView* ModelClass::GetTexture()
 {
@@ -91,12 +98,6 @@ bool ModelClass::InitializeBuffers(ID3D11Device* device)
 	HRESULT result;
 	int i;
 
-	//Take note that we will no longer manually set the vertex and index count here.Once we get to the ModelClass::LoadModel function you will see that we read the vertex and index counts in at that point instead.
-	/*// Set the number of vertices in the vertex array.
-	m_vertexCount = 4;
-
-	// Set the number of indices in the index array.
-	m_indexCount = 9;*/
 
 	// Create the vertex array.
 	vertices = new VertexType[m_vertexCount];
@@ -111,51 +112,6 @@ bool ModelClass::InitializeBuffers(ID3D11Device* device)
 	{
 		return false;
 	}
-	
-	/*//现在填充顶点和序列的数组。一定注意我按照顺时针的顺序来填充它们，这是绘制它们的顺序。如果你逆时针填充它们，那么它们将对着相反方向而被裁减掉而不会被显示。请永远记着顶点传送给GPU的顺序是非常重要的。作为vertex的一部分，颜色也在这里设置，我都设置为绿色。
-	//顶点数组不再需要颜色变量，而需要纹理坐标变量。纹理坐标中U在前V在后。例如第一个纹理坐标是三角形左下角，这个位置对应的U是0
-	//The only change to the InitializeBuffers function is here in the vertex setup. Each vertex now has normals associated with it for lighting calculations. The normal is a line that is perpendicular to the face of the polygon so that the exact direction the face is pointing can be calculated. For simplicity purposes I set the normal for each vertex along the Z axis by setting each Z component to -1.0f which makes the normal point towards the viewer.
-	// Load the vertex array with data.
-	vertices[0].position = D3DXVECTOR3(-1.0f, -1.0f, 0.0f);  // Bottom left.
-	vertices[0].texture = D3DXVECTOR2(0.0f, 1.0f);
-	vertices[0].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
-
-	vertices[1].position = D3DXVECTOR3(-1.0f, 1.0f, 0.0f);  // Top left.
-	vertices[1].texture = D3DXVECTOR2(0.0f, 0.0f);
-	vertices[1].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
-
-	vertices[2].position = D3DXVECTOR3(1.0f, -1.0f, 0.0f);  // Bottom right.
-	vertices[2].texture = D3DXVECTOR2(1.0f, 1.0f);
-	vertices[2].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
-
-	vertices[3].position = D3DXVECTOR3(1.0f, 1.0f, 0.0f);  // Top right.
-	vertices[3].texture = D3DXVECTOR2(1.0f, 0.0f);
-	vertices[3].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
-
-	// Load the index array with data.
-	//left top triangle
-	indices[0] = 0;  // Bottom left.
-	indices[1] = 1;  // Top left.
-	indices[2] = 2;  // Bottom right.
-
-	//right bottom triangle
-	indices[3] = 3;  // Top right
-	indices[4] = 2;  // Bottom right
-	indices[5] = 1;  // Top left
-
-	//left top triangle
-	indices[6] = 0;  // Bottom left.
-	indices[7] = 2;  // Bottom right.
-	indices[8] = 1;  // Top left.
-
-	//right bottom triangle
-	indices[9] = 3;  // Top right
-	indices[10] = 1;  // Top left
-	indices[11] = 2;  // Bottom right*/
-
-
-	//数组填充后我们可以使用它们创建vertex buffer和index buffer。以相同方式创建了两个buffer。首先填充了一个buffer的描述结构体，在描述体里ByteWidth（buffer的大小）和BindFlags（buffer的类型）必须要正确，填充好描述体后，需要将vertex或index数组赋值给子资源指针。填充好描述体并设置好子资源指针后，可以通过D3D设备调用CreateBuffer函数来得到创建的buffer的指针。
-	//Loading the vertex and index arrays has changed a bit.Instead of setting the values manually we loop through all the elements in the new m_model array and copy that data from there into the vertex array.The index array is easy to build as each vertex we load has the same index number as the position in the array it was loaded into.
 
 	// Load the vertex array and index array with data.
 	for (i = 0; i<m_vertexCount; i++)
@@ -206,7 +162,6 @@ bool ModelClass::InitializeBuffers(ID3D11Device* device)
 	{
 		return false;
 	}
-	//创建好vertex buffer和index buffer后，数据就已经并拷贝到buffer中了，我们可以删除用不到的数组了。
 
 	// Release the arrays now that the vertex and index buffers have been created and loaded.
 	delete[] vertices;
@@ -217,7 +172,6 @@ bool ModelClass::InitializeBuffers(ID3D11Device* device)
 
 	return true;
 }
-
 
 
 void ModelClass::ShutdownBuffers()
@@ -238,6 +192,7 @@ void ModelClass::ShutdownBuffers()
 
 	return;
 }
+
 
 void ModelClass::RenderBuffers(ID3D11DeviceContext* deviceContext)
 {
@@ -261,7 +216,7 @@ void ModelClass::RenderBuffers(ID3D11DeviceContext* deviceContext)
 	return;
 }
 
-//LoadTexture负责创建贴图对象并用文件名进行初始化，在初始化函数中会调用这个方法。
+
 bool ModelClass::LoadTexture(ID3D11Device* device, WCHAR* filename)
 {
 	bool result;
@@ -284,7 +239,6 @@ bool ModelClass::LoadTexture(ID3D11Device* device, WCHAR* filename)
 	return true;
 }
 
-//ReleaseTexture负责释放LoadTexture中创建的贴图资源。
 
 void ModelClass::ReleaseTexture()
 {
@@ -299,7 +253,6 @@ void ModelClass::ReleaseTexture()
 	return;
 }
 
-// This is the new LoadModel function which handles loading the model data from the text file into the m_model array variable. It opens the text file and reads in the vertex count first. After reading the vertex count it creates the ModelType array and then reads each line into the array. Both the vertex count and index count are now set in this function.
 
 bool ModelClass::LoadModel(char* filename)
 {
@@ -360,7 +313,7 @@ bool ModelClass::LoadModel(char* filename)
 	return true;
 }
 
-//The ReleaseModel function handles deleting the model data array.
+
 void ModelClass::ReleaseModel()
 {
 	if (m_model)

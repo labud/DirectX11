@@ -32,7 +32,6 @@ public:
 	D3DXVECTOR4 GetSpecularColor();
 	float GetSpecularPower();
 
-
 private:
 	D3DXVECTOR4 m_ambientColor;
 	D3DXVECTOR4 m_diffuseColor;

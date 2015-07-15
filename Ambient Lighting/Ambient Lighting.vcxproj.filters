@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="CameraClass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="D3dclass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsClass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="InputClass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LightClass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LightShaderClass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelClass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemClass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureClass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CameraClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="D3dclass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LightClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LightShaderClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="InputClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{0ce39f4f-60c5-4f98-b495-6e25bfe7f450}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{682647c8-d544-4ee4-b1ef-af1700035fd3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

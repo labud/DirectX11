@@ -90,7 +90,6 @@
     <ClInclude Include="ModelClass.h" />
     <ClInclude Include="SystemClass.h" />
     <ClInclude Include="TextureClass.h" />
-    <ClInclude Include="TextureShaderClass.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CameraClass.cpp" />
@@ -103,7 +102,6 @@
     <ClCompile Include="ModelClass.cpp" />
     <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="TextureClass.cpp" />
-    <ClCompile Include="TextureShaderClass.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

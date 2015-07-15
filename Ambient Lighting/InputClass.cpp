@@ -55,4 +55,3 @@ bool InputClass::IsKeyDown(unsigned int key)
 	// Return what state the key is in (pressed/not pressed).
 	return m_keys[key];
 }
-
