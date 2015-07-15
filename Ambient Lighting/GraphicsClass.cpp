@@ -118,9 +118,12 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	//Set the intensity of the ambient light to 15 % white color.Also set the direction of the light to point down the positive X axis so we can directly see the effect of ambient lighting on the cube.
 
 	// Initialize the light object.
+	//	In the light class object we now set the specular color and the specular power.For this tutorial we set the specular color to white and set the specular power to 32. Remember that the lower the specular power value the greater the specular effect will be.
 	m_Light->SetAmbientColor(0.2f, 0.2f, 0.2f, 1.0f);
 	m_Light->SetDiffuseColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_Light->SetDirection(1.0f, 0.0f, 0.0f);
+	m_Light->SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_Light->SetSpecularPower(32.0f);
 
 	return true;
 }
@@ -232,8 +235,9 @@ bool GraphicsClass::Render(float rotation)
 	//The light shader is called here to render the triangle.The new light object is used to send the diffuse light color and light direction into the Render function so that the shader has access to those values.
 
 	// Render the model using the light shader.
+	// Render the model using the light shader.
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
-		m_Model->GetTexture(), m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor());
+		m_Model->GetTexture(), m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(), m_Camera->GetPosition(), m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
 	if (!result)
 	{
 		return false;
