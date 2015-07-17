@@ -52,7 +52,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Set the initial position of the camera.
-	m_Camera->SetPosition(0.0f, 0.0f, -10.0f);
+	m_Camera->SetPosition(0.0f, 0.0f, -40.0f);
 
 	// Create the model object.
 	m_Model = new ModelClass;
@@ -62,7 +62,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Initialize the model object.
-	result = m_Model->Initialize(m_D3D->GetDevice(), "data/cube.txt", L"data/pic1.dds");
+	result = m_Model->Initialize(m_D3D->GetDevice(), "data/model.txt", L"data/pic1.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);
@@ -146,21 +146,28 @@ void GraphicsClass::Shutdown()
 }
 
 
-bool GraphicsClass::Frame()
+bool GraphicsClass::Frame(float posX, float posY, float posZ, float rotX, float rotY, float rotZ)
 {
 	bool result;
-	static float rotation = 0.0f;
+	static float lightPositionX = -5.0f;
 
 
-	// Update the rotation variable each frame.
-	rotation += (float)D3DX_PI * 0.005f;
-	if (rotation > 360.0f)
+	// Set the position of the camera.
+	m_Camera->SetPosition(posX, posY, posZ);
+	m_Camera->SetRotation(rotX, rotY, rotZ);
+
+	// Update the position of the light each frame.
+	/*lightPositionX += 0.05f;
+	if (lightPositionX > 5.0f)
 	{
-		rotation -= 360.0f;
+		lightPositionX = -5.0f;
 	}
 
+	// Update the position of the light.
+	m_Light->SetPosition(lightPositionX, 8.0f, -5.0f);*/
+
 	// Render the graphics scene.
-	result = Render(rotation);
+	result = Render();
 	if (!result)
 	{
 		return false;
@@ -170,7 +177,8 @@ bool GraphicsClass::Frame()
 }
 
 
-bool GraphicsClass::Render(float rotation)
+
+bool GraphicsClass::Render()
 {
 	D3DXMATRIX worldMatrix, viewMatrix, projectionMatrix;
 	bool result;
@@ -188,7 +196,7 @@ bool GraphicsClass::Render(float rotation)
 	m_D3D->GetProjectionMatrix(projectionMatrix);
 
 	// Rotate the world matrix by the rotation value so that the triangle will spin.
-	D3DXMatrixRotationY(&worldMatrix, rotation);
+	//D3DXMatrixRotationY(&worldMatrix, rotation);
 
 	// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
 	m_Model->Render(m_D3D->GetDeviceContext());
