@@ -55,14 +55,14 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	m_Camera->SetPosition(0.0f, 0.0f, -40.0f);
 
 	// Create the model object.
-	m_Model = new ModelClass;
+	m_Model = new AssimpModelClass;
 	if (!m_Model)
 	{
 		return false;
 	}
 
 	// Initialize the model object.
-	result = m_Model->Initialize(m_D3D->GetDevice(), "data/model.txt", L"data/pic1.dds");
+	result = m_Model->Initialize(m_D3D->GetDevice(), "data/female.obj", L"data/pic1.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);

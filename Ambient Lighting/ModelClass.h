@@ -51,6 +51,8 @@ public:
 	int GetIndexCount();
 	ID3D11ShaderResourceView* GetTexture();
 
+	void SetPosition(float, float, float);
+	void GetPosition(float&, float&, float&);
 
 private:
 	bool InitializeBuffers(ID3D11Device*);
@@ -68,4 +70,5 @@ private:
 	int m_vertexCount, m_indexCount;
 	TextureClass* m_Texture;
 	ModelType* m_model;
+	float m_positionX, m_positionY, m_positionZ;
 };

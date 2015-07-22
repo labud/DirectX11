@@ -59,7 +59,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d9.lib;d3dx10d.lib;d3dx9d.lib;dxerr.lib;dxguid.lib;winmm.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d9.lib;d3dx10d.lib;d3dx9d.lib;dxerr.lib;dxguid.lib;winmm.lib;comctl32.lib;assimp.lib;assimpd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -81,6 +81,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AssimpModelClass.h" />
     <ClInclude Include="CameraClass.h" />
     <ClInclude Include="D3dclass.h" />
     <ClInclude Include="GraphicsClass.h" />
@@ -94,6 +95,7 @@
     <ClInclude Include="TimerClass.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AssimpModelClass.cpp" />
     <ClCompile Include="CameraClass.cpp" />
     <ClCompile Include="D3dclass.cpp" />
     <ClCompile Include="GraphicsClass.cpp" />

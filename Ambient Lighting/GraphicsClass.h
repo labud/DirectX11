@@ -8,7 +8,7 @@
 ///////////////////////
 #include "d3dclass.h"
 #include "cameraclass.h"
-#include "modelclass.h"
+#include "assimpmodelclass.h"
 #include "lightshaderclass.h"
 #include "lightclass.h"
 
@@ -42,7 +42,7 @@ private:
 private:
 	D3DClass* m_D3D;
 	CameraClass* m_Camera;
-	ModelClass* m_Model;
+	AssimpModelClass* m_Model;
 	LightShaderClass* m_LightShader;
 	LightClass* m_Light;
 };

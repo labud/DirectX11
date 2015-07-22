@@ -85,6 +85,7 @@
     <ClCompile Include="D3dClass.cpp" />
     <ClCompile Include="GraphicsClass.cpp" />
     <ClCompile Include="InputClass.cpp" />
+    <ClCompile Include="LightClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ModelClass.cpp" />
     <ClCompile Include="PositionClass.cpp" />
@@ -98,6 +99,7 @@
     <ClInclude Include="D3dClass.h" />
     <ClInclude Include="GraphicsClass.h" />
     <ClInclude Include="InputClass.h" />
+    <ClInclude Include="LightClass.h" />
     <ClInclude Include="ModelClass.h" />
     <ClInclude Include="PositionClass.h" />
     <ClInclude Include="RenderTextureClass.h" />

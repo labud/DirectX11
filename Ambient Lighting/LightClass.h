@@ -39,3 +39,5 @@ private:
 	D3DXVECTOR4 m_specularColor;
 	float m_specularPower;
 };
+
+

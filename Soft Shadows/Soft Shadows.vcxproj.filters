@@ -48,6 +48,9 @@
     <ClCompile Include="RenderTextureClass.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="LightClass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemClass.h">
@@ -78,6 +81,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RenderTextureClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LightClass.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
