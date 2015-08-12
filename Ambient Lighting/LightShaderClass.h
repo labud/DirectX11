@@ -20,20 +20,16 @@ using namespace std;
 class LightShaderClass
 {
 private:
-	struct MatrixBufferType
+	struct VSBufferType
 	{
 		D3DXMATRIX world;
 		D3DXMATRIX view;
 		D3DXMATRIX projection;
-	};
-
-	struct CameraBufferType
-	{
 		D3DXVECTOR3 cameraPosition;
 		float padding;
 	};
 
-	struct LightBufferType
+	struct PSBufferType
 	{
 		D3DXVECTOR4 ambientColor;
 		D3DXVECTOR4 diffuseColor;
@@ -66,7 +62,7 @@ private:
 	ID3D11PixelShader* m_pixelShader;
 	ID3D11InputLayout* m_layout;
 	ID3D11SamplerState* m_sampleState;
-	ID3D11Buffer* m_matrixBuffer;
-	ID3D11Buffer* m_cameraBuffer;
-	ID3D11Buffer* m_lightBuffer;
+
+	ID3D11Buffer* m_VSBuffer;
+	ID3D11Buffer* m_PSBuffer;
 };

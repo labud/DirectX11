@@ -6,15 +6,11 @@
 /////////////
 // GLOBALS //
 /////////////
-cbuffer MatrixBuffer
+cbuffer VSBuffer
 {
 	matrix worldMatrix;
 	matrix viewMatrix;
 	matrix projectionMatrix;
-};
-
-cbuffer CameraBuffer
-{
     float3 cameraPosition;
 	float padding;
 };
@@ -42,7 +38,7 @@ struct PixelInputType
 ////////////////////////////////////////////////////////////////////////////////
 // Vertex Shader
 ////////////////////////////////////////////////////////////////////////////////
-PixelInputType LightVertexShader(VertexInputType input)
+PixelInputType main(VertexInputType input)
 {
     PixelInputType output;
 	float4 worldPosition;
