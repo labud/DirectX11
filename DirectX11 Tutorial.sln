@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Leetcode", "Leetcode\Leetco
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OBJ_Convert", "OBJCONVERT\OBJCONVERT.vcxproj", "{8E697E53-F9F9-4C25-B7AD-42E6A2509375}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "D3D11", "D3D11\D3D11.vcxproj", "{ABF36B75-F931-4620-B1FE-B34EEC7A59C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -57,6 +59,10 @@ Global
 		{8E697E53-F9F9-4C25-B7AD-42E6A2509375}.Debug|Win32.Build.0 = Debug|Win32
 		{8E697E53-F9F9-4C25-B7AD-42E6A2509375}.Release|Win32.ActiveCfg = Release|Win32
 		{8E697E53-F9F9-4C25-B7AD-42E6A2509375}.Release|Win32.Build.0 = Release|Win32
+		{ABF36B75-F931-4620-B1FE-B34EEC7A59C4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ABF36B75-F931-4620-B1FE-B34EEC7A59C4}.Debug|Win32.Build.0 = Debug|Win32
+		{ABF36B75-F931-4620-B1FE-B34EEC7A59C4}.Release|Win32.ActiveCfg = Release|Win32
+		{ABF36B75-F931-4620-B1FE-B34EEC7A59C4}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
