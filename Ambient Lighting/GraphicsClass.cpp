@@ -52,7 +52,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Set the initial position of the camera.
-	m_Camera->SetPosition(0.0f, 0.0f, -10.0f);
+	m_Camera->SetPosition(0.0f, 0.0f, -7.0f);//SetPosition(0.0f, 0.0f, -10.0f);
 
 	// Create the model object.
 	m_Model = new ModelClass;
@@ -62,7 +62,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Initialize the model object.
-	result = m_Model->Initialize(m_D3D->GetDevice(), "data/cube.txt", L"data/pic1.dds");
+	result = m_Model->Initialize(m_D3D->GetDevice(), "data/pyramid.txt", L"data/pic1.dds");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);
@@ -94,7 +94,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	// Initialize the light object.
 	m_Light->SetAmbientColor(0.15f, 0.15f, 0.15f, 1.0f);
 	m_Light->SetDiffuseColor(1.0f, 1.0f, 1.0f, 1.0f);
-	m_Light->SetDirection(1.0f, 0.0f, 1.0f);
+	m_Light->SetDirection(1.0f, 0.0f, 0.0f);
 	m_Light->SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
 	m_Light->SetSpecularPower(32.0f);
 

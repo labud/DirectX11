@@ -20,7 +20,7 @@ using namespace std;
 class LightShaderClass
 {
 private:
-	struct VSBufferType
+	/*struct VSBufferType
 	{
 		D3DXMATRIX world;
 		D3DXMATRIX view;
@@ -40,7 +40,27 @@ private:
 		TMP T;
 		float specularPower;
 		D3DXVECTOR4 specularColor;
+	};/**/
+
+	struct VSBufferType{
+		D3DXMATRIX gWVP;
+		D3DXMATRIX gWorld;
 	};
+
+	struct DirectionalLight{
+		D3DXVECTOR3 Color;
+		float AmbientIntensity;
+		float DiffuseIntensity;
+		D3DXVECTOR3 Direction;
+	};
+
+	struct PSBufferType{
+		DirectionalLight gDirectionalLight;
+		D3DXVECTOR3 gEyeWorldPos;
+		float gMatSpecularIntensity;
+		float gSpecularPower;
+		D3DXVECTOR3 padding;
+	};/**/
 
 public:
 	LightShaderClass();

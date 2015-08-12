@@ -31,10 +31,11 @@ bool LightShaderClass::Initialize(ID3D11Device* device, HWND hwnd)
 
 
 	// Initialize the vertex and pixel shaders.
-	result = InitializeShader(device, hwnd, L"data/light.vs", L"data/light.ps");
+	result = InitializeShader(device, hwnd, L"data\\HLSL_vs.vs", L"data\\HLSL_ps.ps");
 	if (!result)
 	{
 		return false;
+
 	}
 
 	return true;
@@ -360,11 +361,12 @@ bool LightShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D
 	vsdataPtr = (VSBufferType*)mappedResource.pData;
 
 	// Copy the matrices into the constant buffer.
-	vsdataPtr->world = worldMatrix;
+	/*vsdataPtr->world = worldMatrix;
 	vsdataPtr->view = viewMatrix;
 	vsdataPtr->projection = projectionMatrix;
-	vsdataPtr->cameraPosition = cameraPosition;
-
+	vsdataPtr->cameraPosition = cameraPosition;*/
+	vsdataPtr->gWorld = worldMatrix;
+	vsdataPtr->gWVP = projectionMatrix * viewMatrix * worldMatrix;
 	// Unlock the constant buffer.
 	deviceContext->Unmap(m_VSBuffer, 0);
 
@@ -389,11 +391,21 @@ bool LightShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D
 	psdataPtr = (PSBufferType*)mappedResource.pData;
 
 	// Copy the lighting variables into the light constant buffer.
-	psdataPtr->ambientColor = ambientColor;
+	/*psdataPtr->ambientColor = ambientColor;
 	psdataPtr->T.diffuseColor = diffuseColor;
 	psdataPtr->T.lightDirection = lightDirection;
 	psdataPtr->specularColor = specularColor;
-	psdataPtr->specularPower = specularPower;
+	psdataPtr->specularPower = specularPower;*/
+
+	psdataPtr->gDirectionalLight.AmbientIntensity = 0.5f;
+	psdataPtr->gDirectionalLight.Color = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+	psdataPtr->gDirectionalLight.DiffuseIntensity = 0.75f;
+	psdataPtr->gDirectionalLight.Direction = D3DXVECTOR3(1.0f, 0.0, 0.0);
+
+	psdataPtr->gEyeWorldPos = cameraPosition;
+	psdataPtr->gMatSpecularIntensity = 1.0f;
+	psdataPtr->gSpecularPower = 32.0F;
+	psdataPtr->padding = D3DXVECTOR3(0.f, 0.f, 0.f);
 
 	// Unlock the light constant buffer.
 	deviceContext->Unmap(m_PSBuffer, 0);
