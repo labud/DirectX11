@@ -364,7 +364,6 @@ bool LightShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D
 	vsdataPtr->view = viewMatrix;
 	vsdataPtr->projection = projectionMatrix;
 	vsdataPtr->cameraPosition = cameraPosition;
-	vsdataPtr->padding = 0.0f;
 
 	// Unlock the constant buffer.
 	deviceContext->Unmap(m_VSBuffer, 0);
@@ -374,8 +373,6 @@ bool LightShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D
 
 	// Now set the constant buffer in the vertex shader with the updated values.
 	deviceContext->VSSetConstantBuffers(bufferNumber, 1, &m_VSBuffer);
-
-
 
 
 	// Set shader texture resource in the pixel shader.
@@ -393,8 +390,8 @@ bool LightShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D
 
 	// Copy the lighting variables into the light constant buffer.
 	psdataPtr->ambientColor = ambientColor;
-	psdataPtr->diffuseColor = diffuseColor;
-	psdataPtr->lightDirection = lightDirection;
+	psdataPtr->T.diffuseColor = diffuseColor;
+	psdataPtr->T.lightDirection = lightDirection;
 	psdataPtr->specularColor = specularColor;
 	psdataPtr->specularPower = specularPower;
 

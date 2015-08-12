@@ -28,12 +28,16 @@ private:
 		D3DXVECTOR3 cameraPosition;
 		float padding;
 	};
+	struct TMP{
+		D3DXVECTOR4 diffuseColor;
+		D3DXVECTOR3 lightDirection;
+	};
+
 
 	struct PSBufferType
 	{
 		D3DXVECTOR4 ambientColor;
-		D3DXVECTOR4 diffuseColor;
-		D3DXVECTOR3 lightDirection;
+		TMP T;
 		float specularPower;
 		D3DXVECTOR4 specularColor;
 	};
