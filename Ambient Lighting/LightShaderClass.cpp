@@ -17,6 +17,7 @@ LightShaderClass::LightShaderClass()
 
 LightShaderClass::LightShaderClass(const LightShaderClass& other)
 {
+
 }
 
 
@@ -230,6 +231,7 @@ bool LightShaderClass::InitializeShader(ID3D11Device* device, HWND hwnd, WCHAR* 
 	// Setup the description of the Pixel Shader constant buffer that is in the pixel shader.
 	// Note that ByteWidth always needs to be a multiple of 16 if using D3D11_BIND_CONSTANT_BUFFER or CreateBuffer will fail.
 	PSBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
+
 	PSBufferDesc.ByteWidth = sizeof(PSBufferType);
 	PSBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	PSBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;

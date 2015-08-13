@@ -1,6 +1,6 @@
-SamplerState gSampler;
+uniform SamplerState gSampler;		
 Texture2D mytexture;
-                                              
+
 struct DirectionalLight                                                             
 {                                                                                   
     float3 Color;       
@@ -10,11 +10,11 @@ struct DirectionalLight
 };            
 
 cbuffer PSBuffer{
-	DirectionalLight gDirectionalLight;                                         
+	DirectionalLight gDirectionalLight; 
 	float3 gEyeWorldPos;     
 	float gMatSpecularIntensity;                                                
 	float gSpecularPower;      
-	float3 padding;
+	uniform float3 padding;
 };
 
 struct PixelInputType{                                                     
@@ -22,10 +22,14 @@ struct PixelInputType{
 	float2 TexCoord0 : TEXCOORD0;
 	float3 Normal0 : NORMAL;
 	float3 WorldPos0 : POSITION;  
-};                                                                                
-                                                                                   
-float4 main(PixelInputType input) : SV_TARGET{                
-	float4 	FragColor;     
+}; 
+
+struct PixelOutputType{  
+	float4 	FragColor : SV_TARGET;     
+};
+                                                                       
+PixelOutputType main(PixelInputType input){          
+	PixelOutputType output;
 	
     float4 AmbientColor = float4(gDirectionalLight.Color, 1.0f) * gDirectionalLight.AmbientIntensity;
     float3 LightDirection = -gDirectionalLight.Direction;                          
@@ -46,9 +50,14 @@ float4 main(PixelInputType input) : SV_TARGET{
             SpecularFactor = pow(SpecularFactor, gSpecularPower);
             SpecularColor = float4(gDirectionalLight.Color * gMatSpecularIntensity * SpecularFactor, 1.0f);
         }                                                                           
-    }                                                                                         
-    FragColor = mytexture.Sample(gSampler, input.TexCoord0.xy)*                      
+    }  
+
+	
+    output.FragColor = mytexture.Sample(gSampler, input.TexCoord0.xy)*             
                 (AmbientColor + DiffuseColor + SpecularColor);    
 
-	return FragColor;
+	return output;
 }
+
+                                                                               
+  
