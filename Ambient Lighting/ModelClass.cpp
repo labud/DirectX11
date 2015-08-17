@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include "modelclass.h"
 
-
+#include<iostream>
 ModelClass::ModelClass()
 {
 	m_vertexBuffer = 0;
@@ -296,15 +296,20 @@ bool ModelClass::LoadModel(char* filename)
 	{
 		fin.get(input);
 	}
-	fin.get(input);
-	fin.get(input);
 
+	/*fstream fout;
+	fout.open("data\\read.txt");*/
 	// Read in the vertex data.
 	for (i = 0; i<m_vertexCount; i++)
 	{
 		fin >> m_model[i].x >> m_model[i].y >> m_model[i].z;
 		fin >> m_model[i].tu >> m_model[i].tv;
 		fin >> m_model[i].nx >> m_model[i].ny >> m_model[i].nz;
+
+
+		/*fout << m_model[i].x << " " << m_model[i].y << " " << m_model[i].z << " ";
+		fout << m_model[i].tu << " " << m_model[i].tv << " ";
+		fout << m_model[i].nx << " " << m_model[i].ny << " " << m_model[i].nz << endl; */
 	}
 
 	// Close the model file.

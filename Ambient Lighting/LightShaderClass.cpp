@@ -2,7 +2,31 @@
 // Filename: lightshaderclass.cpp
 ////////////////////////////////////////////////////////////////////////////////
 #include "lightshaderclass.h"
+#include "ShaderGenerator.h"
 
+
+WCHAR* ANSI2Unicode(const string& str)
+{
+	int len = 0;
+	len = str.length();
+	int unicodeLen = ::MultiByteToWideChar(CP_ACP,
+		0,
+		str.c_str(),
+		-1,
+		NULL,
+		0);
+	WCHAR*  pUnicode;
+	pUnicode = new WCHAR[unicodeLen + 1];
+	memset(pUnicode, 0, (unicodeLen + 1)*sizeof(WCHAR));
+	::MultiByteToWideChar(CP_ACP,
+		0,
+		str.c_str(),
+		-1,
+		(LPWSTR)pUnicode,
+		unicodeLen);
+
+	return pUnicode;
+}
 
 LightShaderClass::LightShaderClass()
 {
@@ -32,7 +56,12 @@ bool LightShaderClass::Initialize(ID3D11Device* device, HWND hwnd)
 
 
 	// Initialize the vertex and pixel shaders.
-	result = InitializeShader(device, hwnd, L"data\\HLSL_vs.vs", L"data\\HLSL_ps.ps");
+	ShaderGenerator* sg = new ShaderGenerator();
+	string vs = sg->convert2HLSL("data/MidSL.vs", "data/HLSL.vs");
+	string ps = sg->convert2HLSL("data/MidSL.ps", "data/HLSL.ps");
+
+
+	result = InitializeShader(device, hwnd, ANSI2Unicode(vs), ANSI2Unicode(ps));
 	if (!result)
 	{
 		return false;

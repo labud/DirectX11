@@ -14,6 +14,7 @@
     <ProjectGuid>{AE30B720-571D-46FE-A53F-B048421CD65B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>My3DModelRendering</RootNamespace>
+    <ProjectName>DX11</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -88,6 +89,7 @@
     <ClInclude Include="LightClass.h" />
     <ClInclude Include="LightShaderClass.h" />
     <ClInclude Include="ModelClass.h" />
+    <ClInclude Include="ShaderGenerator.h" />
     <ClInclude Include="SystemClass.h" />
     <ClInclude Include="TextureClass.h" />
   </ItemGroup>
@@ -100,6 +102,7 @@
     <ClCompile Include="LightShaderClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ModelClass.cpp" />
+    <ClCompile Include="ShaderGenerator.cpp" />
     <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="TextureClass.cpp" />
   </ItemGroup>

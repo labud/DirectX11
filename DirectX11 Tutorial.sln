@@ -3,15 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "myTutorialD3D11_1", "myTutorialD3D11_1\myTutorialD3D11_1.vcxproj", "{1EE37E39-F236-45A2-8B0F-F05AFAC245B3}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "D3D", "D3D\D3D.vcxproj", "{EAFE867F-0F47-4836-A0BE-252D1C057391}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Diffuse Lighting", "Diffuse Lighting\Diffuse Lighting.vcxproj", "{382A7F81-75D5-4910-A633-EFAD8F228420}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3D Model Rendering", "3D Model Rendering\3D Model Rendering.vcxproj", "{428C1D1F-39E5-4857-A2B3-6C3473E490CA}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ambient Lighting", "Ambient Lighting\Ambient Lighting.vcxproj", "{AE30B720-571D-46FE-A53F-B048421CD65B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DX11", "Ambient Lighting\Ambient Lighting.vcxproj", "{AE30B720-571D-46FE-A53F-B048421CD65B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,22 +11,6 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1EE37E39-F236-45A2-8B0F-F05AFAC245B3}.Debug|Win32.ActiveCfg = Debug|Win32
-		{1EE37E39-F236-45A2-8B0F-F05AFAC245B3}.Debug|Win32.Build.0 = Debug|Win32
-		{1EE37E39-F236-45A2-8B0F-F05AFAC245B3}.Release|Win32.ActiveCfg = Release|Win32
-		{1EE37E39-F236-45A2-8B0F-F05AFAC245B3}.Release|Win32.Build.0 = Release|Win32
-		{EAFE867F-0F47-4836-A0BE-252D1C057391}.Debug|Win32.ActiveCfg = Debug|Win32
-		{EAFE867F-0F47-4836-A0BE-252D1C057391}.Debug|Win32.Build.0 = Debug|Win32
-		{EAFE867F-0F47-4836-A0BE-252D1C057391}.Release|Win32.ActiveCfg = Release|Win32
-		{EAFE867F-0F47-4836-A0BE-252D1C057391}.Release|Win32.Build.0 = Release|Win32
-		{382A7F81-75D5-4910-A633-EFAD8F228420}.Debug|Win32.ActiveCfg = Debug|Win32
-		{382A7F81-75D5-4910-A633-EFAD8F228420}.Debug|Win32.Build.0 = Debug|Win32
-		{382A7F81-75D5-4910-A633-EFAD8F228420}.Release|Win32.ActiveCfg = Release|Win32
-		{382A7F81-75D5-4910-A633-EFAD8F228420}.Release|Win32.Build.0 = Release|Win32
-		{428C1D1F-39E5-4857-A2B3-6C3473E490CA}.Debug|Win32.ActiveCfg = Debug|Win32
-		{428C1D1F-39E5-4857-A2B3-6C3473E490CA}.Debug|Win32.Build.0 = Debug|Win32
-		{428C1D1F-39E5-4857-A2B3-6C3473E490CA}.Release|Win32.ActiveCfg = Release|Win32
-		{428C1D1F-39E5-4857-A2B3-6C3473E490CA}.Release|Win32.Build.0 = Release|Win32
 		{AE30B720-571D-46FE-A53F-B048421CD65B}.Debug|Win32.ActiveCfg = Debug|Win32
 		{AE30B720-571D-46FE-A53F-B048421CD65B}.Debug|Win32.Build.0 = Debug|Win32
 		{AE30B720-571D-46FE-A53F-B048421CD65B}.Release|Win32.ActiveCfg = Release|Win32
